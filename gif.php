@@ -35,8 +35,9 @@
 		if($future_date < $now){
 			// Open the first source image and add the text.
 			$image = imagecreatefrompng('images/countdown.png');
-			imageAlphaBlending($image, true);
-			imageSaveAlpha($image, true);
+			imagecolorallocatealpha($image, 153, 153, 152, 127);
+			imagealphablending($image, true); 
+			imagesavealpha($image,true);
 			;
 			$text = $interval->format('00:00:00:00');
 			imagettftext ($image , $font['size'] , $font['angle'] , $font['x-offset'] , $font['y-offset'] , $font['color'] , $font['file'], $text );
@@ -50,8 +51,9 @@
 		} else {
 			// Open the first source image and add the text.
 			$image = imagecreatefrompng('images/countdown.png');
-			imageAlphaBlending($image, true);
-			imageSaveAlpha($image, true);
+			imagecolorallocatealpha($image, 153, 153, 152, 127);
+			imagealphablending($image, true); 
+			imagesavealpha($image,true);
 			;
 			$text = $interval->format('0%a %H %I %S');
 			imagettftext ($image , $font['size'] , $font['angle'] , $font['x-offset'] , $font['y-offset'] , $font['color'] , $font['file'], $text );
