@@ -28,6 +28,8 @@
 	$font = array(
 		'size' => 30, // Font size, in pts usually.
 		'angle' => 0, // Angle of the text
+		'x-offset' => 0, // The larger the number the further the distance from the left hand side, 0 to align to the left.
+		'y-offset' => 35, // The vertical alignment, trial and error between 20 and 60.
 		'file' => __DIR__ . DIRECTORY_SEPARATOR . fonts . DIRECTORY_SEPARATOR . 'JLREmeric-SemiBold.ttf', // Font path
 		'color' => imagecolorallocate($image, $red, $green, $blue), // RGB Colour of the text
 	);
@@ -41,16 +43,8 @@
 			$background = imagecolorallocate($image, $bgred, $bggreen, $bgblue);
 			imagefill($image, 0, 0, $background);
 			//;
-			$text = $interval->format('00   00   00   00');
-			// Create our bounding box for the text
-			$box = imagettfbbox($font['size'], $font['angle'], $font['file'], $text);
-			// Measure the text
-			$textwidth = abs($box[4] - $box[0]);
-			// Center the text
-			$x = ceil(($width - $textwidth) / 2); // lower left X coordinate for text
-			
-			imagettftext($image, $font['size'], $font['angle'], $x, $font['size'], $font['color'], $font['file'], $text);
-			
+			$text = $interval->format('00 00 00 00');
+			imagettftext ($image , $font['size'] , $font['angle'] , $font['x-offset'] , $font['y-offset'] , $font['color'] , $font['file'], $text );
 			ob_start();
 			imagecolortransparent($image, $background);
 			imagegif($image);
@@ -65,22 +59,14 @@
 			$background = imagecolorallocate($image, $bgred, $bggreen, $bgblue);
 			imagefill($image, 0, 0, $background);
 			//;
-			$text = $interval->format('%a   %H   %I   %S');
+			$text = $interval->format('%a  %H  %I  %S');
 			// %a is weird in that it doesn’t give you a two digit number
 			// check if it starts with a single digit 0-9
 			// and prepend a 0 if it does
 			if(preg_match('/^[0-9]\:/', $text)){
 				$text = '0'.$text;
 			}
-			// Create our bounding box for the text
-			$box = imagettfbbox($font['size'], $font['angle'], $font['file'], $text);
-			// Measure the text
-			$textwidth = abs($box[4] - $box[0]);
-			// Center the text
-			$x = ceil(($width - $textwidth) / 2); // lower left X coordinate for text
-			
-			imagettftext($image, $font['size'], $font['angle'], $x, $font['size'], $font['color'], $font['file'], $text);
-
+			imagettftext ($image , $font['size'] , $font['angle'] , $font['x-offset'] , $font['y-offset'] , $font['color'] , $font['file'], $text );
 			ob_start();
 			imagecolortransparent($image, $background);
 			imagegif($image);
