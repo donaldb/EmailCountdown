@@ -1,16 +1,20 @@
 <?php
-
 	date_default_timezone_set('America/Toronto');
 	include 'GIFEncoder.class.php';
-	include 'php52-fix.php';
-
+	include 'hex2rgb.php';
+	
 	// Query string variables
-	$time = $_GET['time'];
-	$color = $_GET['color'];
-	$bg = $_GET['bg'];
-	$fontname = __DIR__ . DIRECTORY_SEPARATOR . fonts . DIRECTORY_SEPARATOR . $_GET['fontname'];
-	$fontsize = $_GET['fontsize'];
+	$time = filter_input(INPUT_GET, 'time');
+	$color = filter_input(INPUT_GET, 'color');
+	$bg = filter_input(INPUT_GET, 'bg');
+	$fontsize = filter_input(INPUT_GET, 'fontsize');
+	$fontfile = filter_input(INPUT_GET, 'fontname');
+	
+	$fontname = __DIR__ . DIRECTORY_SEPARATOR . fonts . DIRECTORY_SEPARATOR . $fontfile;
 
+	$color = hex2RGB($color, true, ',');
+	$bg = hex2RGB($bg, true, ',');
+	
 	list($red, $green, $blue) = explode(",", $color);
 	list($bgred, $bggreen, $bgblue) = explode(",", $bg);
 
@@ -24,29 +28,37 @@
 	$interval = date_diff($future_date, $now);
 
 	if($future_date < $now){
-		$text = $interval->format('00 00 00 00');
+            $text = $interval->format('00 00 00 00');
 	} else {
-		$text = $interval->format('%a %H %I %S');
+            $text = $interval->format('%a %H %I %S');
+            if(preg_match('/^[0-9]\s/', $text)){
+		$text = '0'.$text;
+            }
 	}
-
+	
 	// Create our bounding box for the text
 	$box = imagettfbbox($fontsize, 0, $fontname, $text);
-
+	
 	// Measure the text
-	$textwidth = abs($box[4] - $box[0]);
+	$textwidth = abs($box[4] - $box[0]) + 5;
 	$textheight = abs($box[5] - $box[1]);
-
+	
 	$delay = 100;// milliseconds
-
+	
+	$image = imagecreatetruecolor($textwidth, $textheight);
+	
 	$font = ['size' => $fontsize, // Font size, in pts usually.
 		'angle' => 0, // Angle of the text
 		'x-offset' => 0, // Usually 0 to align to the left.
-		'y-offset' => $fontsize, // The vertical alignment, usually the same as the font size.
+		'y-offset' => $textheight, // The vertical alignment, usually the same as the font size.
 		'file' => $fontname, // Font path
 		'color' => imagecolorallocate($image, $red, $green, $blue), // RGB Colour of the text
 		'textwidth' => $textwidth,
 		'textheight' => $textheight
-               ];
+	];
+	
+	imagedestroy($image);
+	
 	for($i = 0; $i <= 60; $i++){
 		
 		$interval = date_diff($future_date, $now);
@@ -74,12 +86,12 @@
 			$image = imagecreatetruecolor($font['textwidth'], $font['textheight']);
 			$background = imagecolorallocate($image, $bgred, $bggreen, $bgblue);
 			imagefill($image, 0, 0, $background);
-			//;
+
 			$text = $interval->format('%a %H %I %S');
-			// %a is weird in that it doesn’t give you a two digit number
+			// %a is weird in that it doesn't give you a two digit number
 			// check if it starts with a single digit 0-9
 			// and prepend a 0 if it does
-			if(preg_match('/^[0-9]\:/', $text)){
+			if(preg_match('/^[0-9]\s/', $text)){
 				$text = '0'.$text;
 			}
 
