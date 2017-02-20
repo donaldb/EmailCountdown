@@ -1,24 +1,16 @@
-EmailCountdown
-==============
+# EmailCountdown
 
+Creates an animated gif image that counts down to a specific date and time for use in email campaigns.
+This only simulates a countdown clock in that it displays 60 frames and then it starts again.
 
-**What does this do?**
+## Usage:
 
-Creates a countdown image counting down to a specific time/date for use in email campaigns.
+### URL Parameters (*required)
 
-**How does it work?**
+*time - Date & time when your countdown will end [e.g. 2017-12-31+23:59:59]
+*color - hex colour code for the text
+*bg - hex colour code for the background 
+*fontname - file name for the font to be used. The ttf file must be loaded into the /fonts folder
+*fontsize - the size of the font
 
-This generates an image based on the following variables:
-
-```php
-  $image = imagecreatefrompng('images/countdown.png');
-  $font = array(
-    'size'=>23, // Font size, in pts usually.
-    'angle'=>0, // Angle of the text
-    'x-offset'=>7, // The larger the number the further the distance from the left hand side, 0 to align to the left.
-    'y-offset'=>30, // The vertical alignment, trial and error between 20 and 60.
-    'file'=>'./GillSans.ttc', // Font path
-    'color'=>imagecolorallocate($image, 55, 160, 130), // RGB Colour of the text
-  );
-```
-
+[Example html file](index.html)
