@@ -13,6 +13,6 @@ This only simulates a countdown clock in that it displays 60 frames and then it 
 
 ## Example
 
-...<img src="http://mustardsalt.com/countdown/gif.php?time=2017-12-31+23:59:59&color=ff0000&bg=000000&fontname=OpenSans-Regular-webfont.ttf&fontsize=30" alt="Countdown">...
+```<img src="http://mustardsalt.com/countdown/gif.php?time=2017-12-31+23:59:59&color=ff0000&bg=000000&fontname=OpenSans-Regular-webfont.ttf&fontsize=30" alt="Countdown">```
 
 [Example html file](http://mustardsalt.com/countdown/index.html)
