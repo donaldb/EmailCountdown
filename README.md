@@ -6,11 +6,13 @@ This only simulates a countdown clock in that it displays 60 frames and then it 
 ## URL Parameters (*required)
 
 * **time*** - Date & time when your countdown will end [e.g. 2017-12-31+23:59:59]
-* **color** - hex colour code for the text
-* **bg** - hex colour code for the background
-* **fontname** - file name for the font to be used. The ttf file must be loaded into the /fonts folder
-* **fontsize** - the size of the font
+* **color** - hex colour code for the text [default = 000000 (black)]
+* **bg** - hex colour code for the background [default = ffffff (white)]
+* **fontname** - file name for the font to be used. The ttf file must be loaded into the /fonts folder [default = arial.ttf]
+* **fontsize** - the point size of the font [default = 30]
 
 ## Example
 
-[Example html file](index.html)
+<img src="http://mustardsalt.com/countdown/gif.php?time=2017-12-31+23:59:59&color=ff0000&bg=000000&fontname=OpenSans-Regular-webfont.ttf&fontsize=30" alt="Countdown">
+
+[Example html file](http://mustardsalt.com/countdown/index.html)

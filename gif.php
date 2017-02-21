@@ -5,10 +5,10 @@
 	
 	// Query string variables
 	$time = filter_input(INPUT_GET, 'time');
-	$color = filter_input(INPUT_GET, 'color');
-	$bg = filter_input(INPUT_GET, 'bg');
-	$fontsize = filter_input(INPUT_GET, 'fontsize');
-	$fontfile = filter_input(INPUT_GET, 'fontname');
+	$color = $_GET['color'] ? $_GET['color'] : '000000';
+	$bg = $_GET['bg'] ? $_GET['bg'] : 'ffffff';
+	$fontsize = $_GET['fontsize'] ? $_GET['fontsize'] : '30';
+	$fontfile = $_GET['fontname'] ? $_GET['fontname'] : 'arial.ttf';
 	
 	$fontname = __DIR__ . DIRECTORY_SEPARATOR . fonts . DIRECTORY_SEPARATOR . $fontfile;
 

@@ -13,14 +13,14 @@ phpinfo();
 
 // Show just the module information.
 // phpinfo(8) yields identical results.
-phpinfo(INFO_MODULES);
-	
-	
-if (function_exists('imagecolorallocate')) {
-    echo "imagecolorallocate functions are available.<br />\n";
-} else {
-    echo "imagecolorallocate functions are not available.<br />\n";
-}
+//phpinfo(INFO_MODULES);
+
+
+//if (function_exists('imagecolorallocate')) {
+//    echo "imagecolorallocate functions are available.<br />\n";
+//} else {
+//    echo "imagecolorallocate functions are not available.<br />\n";
+//}
 	
 ?>
 </body>
