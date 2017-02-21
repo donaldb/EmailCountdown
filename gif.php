@@ -31,9 +31,9 @@
 	$interval = date_diff($future_date, $now);
 
 	if($future_date < $now){
-            $text = $interval->format("00 00 00 00");
+            $text = $interval->format("00     00     00     00");
 	} else {
-            $text = $interval->format("%a %H %I %S");
+            $text = $interval->format("%a     %H     %I     %S");
             if(preg_match("/^[0-9]\s/", $text)){
 		$text = "0".$text;
             }
@@ -74,7 +74,7 @@
 			$background = imagecolorallocate($image, $bgred, $bggreen, $bgblue);
 			imagefill($image, 0, 0, $background);
 
-			$text = $interval->format("00 00 00 00");
+			$text = $interval->format("00     00     00     00");
 
 			imagettftext($image, $font["size"], $font["angle"], $font["x-offset"], $font["y-offset"], $font["color"], $font["file"], $text);
 			
@@ -92,7 +92,7 @@
 			$background = imagecolorallocate($image, $bgred, $bggreen, $bgblue);
 			imagefill($image, 0, 0, $background);
 
-			$text = $interval->format("%a %H %I %S");
+			$text = $interval->format("%a     %H     %I     %S");
 			// %a is weird in that it doesn't give you a two digit number
 			// check if it starts with a single digit 0-9
 			// and prepend a 0 if it does
