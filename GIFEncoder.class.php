@@ -254,7 +254,7 @@ class AnimatedGif {
     function display() {
 //late footer add
         $this->addFooter();
-        header('Content-type:image/jpg');
+        header('Content-type:image/gif');
         echo $this->image;
     }
 
