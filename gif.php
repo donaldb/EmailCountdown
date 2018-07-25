@@ -13,7 +13,7 @@
 	$options=array('options'=>array('default'=>60, 'min_range'=>60, 'max_range'=>120));
 	$framecount=filter_input(INPUT_GET, 'frames', FILTER_VALIDATE_INT, $options);
 	
-	$fontname = __DIR__ . DIRECTORY_SEPARATOR . fonts . DIRECTORY_SEPARATOR . $fontfile;
+	$fontname = __DIR__ . DIRECTORY_SEPARATOR . 'fonts' . DIRECTORY_SEPARATOR . $fontfile;
 
 	$color = hex2RGB($hexcolor, true, ",");
 	$bg = hex2RGB($hexbg, true, ",");
