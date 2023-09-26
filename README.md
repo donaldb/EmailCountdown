@@ -5,7 +5,7 @@ This only simulates a countdown clock in that it displays 60 frames and then it 
 
 ## URL Parameters (*required)
 
-* **time*** - Date & time when your countdown will end [e.g. 2023-05-31+23:59:59]
+* **time*** - Date & time when your countdown will end [e.g. 2023-10-30+23:59:59]
 * **color** - Hex colour code for the text [default = 000000 (black)]
 * **bg** - Hex colour code for the background [default = ffffff (white)]
 * **fontname** - File name for the font to be used. The ttf file must be loaded into the /fonts folder [default = arial.ttf]
@@ -14,6 +14,6 @@ This only simulates a countdown clock in that it displays 60 frames and then it 
 
 ## Example
 
-```<img src="http://server.com/countdown/gif.php?time=2023-05-31+23:59:59&color=ff0000&bg=000000&fontname=OpenSans-Regular-webfont.ttf&fontsize=30&frames=120" alt="Countdown">```
+```<img src="http://server.com/countdown/gif.php?time=2023-10-30+23:59:59&color=ff0000&bg=000000&fontname=OpenSans-Regular-webfont.ttf&fontsize=30&frames=120" alt="Countdown">```
 
 [Demo](https://donbraithwaite.com/EmailCountdown/index.html)
